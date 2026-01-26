@@ -1,26 +1,6 @@
-# FairSheafDiffusion
+# Algorithmic Fairness in Neural Sheaf Diffusion via Geometrical Laplacian modifications
 
-Exploration of topological ideas to debias models through graph configurations.
-
-## Code structure
-
-* `results_nb`: Jupyter notebook generating tables and figures from the results of the experiments.
-* `run_experiment.py`: Python code implementing Fair Sheaf Diffusion experiments.
-* `run_neural.py`: Python code implementing Neural Sheaf Diffusion models with fair graph laplacians.
-* `run_shap.py`: Python code implementing shap values for the Fair Sheaf Diffusion models.
-* `exec_grid.sh`: Bash code to run the grid of design choices on the german dataset. It is generated through `utils/experiment_grid.py`.
-* `exec_datasets.sh`: Bash code to run the remaining experiments.
-* `exec_simulations.sh`: Bash code to run the simulation study.
-* `exec_single.sh`: Bash code to run experiments on a single dataset.
-* `NSD`: Modified code of the original Neural Sheaf Diffusion implementation, original repo: [https://github.com/twitter-research/neural-sheaf-diffusion/tree/master](https://github.com/twitter-research/neural-sheaf-diffusion/tree/master).
-* `utils`: Folder storing the implementation of the different parts of the training pipeline.
-    * `data_processing.py`: Implementation of the data processing pipeline: graph creation, train-val split, pre-processing,...
-    * `experiment_grid.py`: Script generating `exec_grid.sh` file.
-    * `parser.py`: Parsers of `run_experiment.py`, `run_neural.py`, `run_shap.py`.
-    * `training.py`: Implementation of the training loop through a custom class.
-* `models`: Folder storing the implementation of the Fair Sheaf Diffusion models.
-    * `fair_nsd.py`: Implementation of Fair Sheaf Diffusion models.
-    * `fair_sheaf.py`: Implementing Neural Sheaf Diffusion models with fair graph laplacians.
+Exploration of geometrical ideas to achieve fairness in ML models.
 
 ## Dependencies
 
@@ -38,5 +18,15 @@ To reproduce the environment used in this project, follow these steps:
     ```bash
     conda env create -f environment_gpu.yml
     ```
-### Cite this work
+
+## Reproduce our results
+
+* `sh_main.sh`: Performs the grid search over real-world datasets, results stored in `results/filter/experiment`.
+* `sh_synthetic.sh`: Performs the synthetic experiment, results stored in `results/filter/synthetic`.
+* `nb_german.ipynb`: Visualization of the spectrum and Dirichlet energy of the laplacian modifications on the German dataset, figures stored in `results/filter/figs`
+* `nb_results.ipynb`: Notebook generating the rest of the figures and tables.
+* `sh_tradeoff.sh`: Performs the sensitivity analysis on the Pokec-z dataset, results stored in `results/filter/tradeoff`.
+* `sh_ablation.sh`: Performs the ablation study on the NSD architecture, implementing our methods for a GCN and GAT. Results stored in `results/filter/ablation`.
+
+## Cite this work
 TBA
