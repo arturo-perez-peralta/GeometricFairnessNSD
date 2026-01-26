@@ -1,0 +1,1 @@
+{"lr": 0.004662889203811664, "weight_decay": 0.00016282738717424302, "hidden_dim": 128, "layers": 5, "activation": "leaky_relu", "dropout": 0.5454864813416876, "drop_edge_rate": 0.2558387893252548}

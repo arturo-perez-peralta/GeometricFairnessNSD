@@ -1,0 +1,1 @@
+{"lr": 0.03881211300399427, "weight_decay": 0.009915873455009524, "n_estimators": 77, "max_depth": 6, "learning_rate": 0.2948946606681453, "subsample": 0.680336406803797, "num_leaves": 76, "fairness_margin": 0.1895989314537685}

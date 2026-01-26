@@ -1,0 +1,19 @@
+channels:
+  - pytorch
+  - conda-forge
+  - pyg
+dependencies:
+  - python=3.10
+  - pip=23.3
+  - cudatoolkit=11.8
+  - pytorch=2.1.0
+  - pyg=2.4.0
+  - pip:
+      - torch-householder==1.0.1
+      - tqdm==4.66.1
+      - shap==0.42.1
+      - pytest==7.4.0
+      - wandb==0.15.8
+      - torchdiffeq==0.2.2
+      - networkx==2.8.8
+name: SheafEnv

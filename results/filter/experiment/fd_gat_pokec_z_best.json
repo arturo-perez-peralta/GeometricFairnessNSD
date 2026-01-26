@@ -1,0 +1,1 @@
+{"lr": 0.0001809053469573892, "weight_decay": 2.0067497826406928e-05, "hidden_dim": 64, "layers": 5, "activation": "elu", "dropout": 0.27134487011730674, "heads": 8, "drop_edge_rate": 0.3889557485828729}

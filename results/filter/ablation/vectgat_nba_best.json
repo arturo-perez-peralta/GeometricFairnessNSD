@@ -1,0 +1,1 @@
+{"lr": 0.04982200295690058, "weight_decay": 0.003149307036421493, "reg_strength": 1.1747937597874754, "layers": 1, "hidden_channels": 16, "input_dropout": 0.33033622256802875, "dropout": 0.10101827701844934, "right_weights": false, "sparse_learner": true, "use_act": false, "sheaf_act": "elu", "second_linear": true, "linear": false}

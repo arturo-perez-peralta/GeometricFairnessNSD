@@ -1,0 +1,1 @@
+{"lr": 0.0003781716065187739, "weight_decay": 0.004324395463752871, "hidden_dim": 128, "layers": 2, "activation": "elu", "dropout": 0.49876638397316914, "type": "gat", "coef": 6.80167379619698}

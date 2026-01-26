@@ -1,0 +1,10 @@
+**/__pycache__/
+*.pt
+*.npy
+cache*
+logs/*
+datasets/homecredit/
+storage/
+*.pyc
+.ipynb_checkpoints
+.DS_Store
