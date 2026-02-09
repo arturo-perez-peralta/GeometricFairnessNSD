@@ -714,10 +714,7 @@ class AdultProcessing(DataProcessing):
 
 
 class CompassProcessing(DataProcessing):
-    """Class implementing the processing of the compass dataset."""
     def download(self):
-        """Download the Compass dataset."""
-
         self.data = 'compas'
         
         df = pd.read_csv("datasets/compas/compas-scores-two-years.csv")
@@ -733,42 +730,41 @@ class CompassProcessing(DataProcessing):
         df['c_jail_in'] = pd.to_datetime(df['c_jail_in'], errors='coerce')
         df['c_jail_out'] = pd.to_datetime(df['c_jail_out'], errors='coerce')
         df['days_in_jail'] = (df['c_jail_out'] - df['c_jail_in']).dt.days.clip(lower=0)
-        df['days_from_arrest_to_screening'] = df['days_b_screening_arrest'] - df['c_days_from_compas']
-        df['c_charge_desc'].fillna(df['c_charge_desc'].mode()[0], inplace=True)
+        
         self.df = df
         return self
 
     def preprocess(self):
-        """Basic pre-processing: one-hot encoding of numeric variables, treatment of sensitive variable."""
         self.sensitive = 'race'
 
         df = self.df.copy()
-        df['race'] = (df['race'] == 'African-American')
         df = df.rename(columns={'two_year_recid': 'Target'})
-
-        drop_cols = [
-            'id', 'name', 'first', 'last', 'compas_screening_date', 'dob',
-            'c_jail_in', 'c_jail_out', 'c_case_number', 'c_offense_date', 
-            'c_arrest_date', 'r_case_number', 'r_offense_date', 'r_charge_desc', 
-            'r_jail_in', 'r_jail_out', 'vr_case_number', 'vr_offense_date', 
-            'vr_charge_desc', 'vr_charge_degree', 'screening_date', 'v_screening_date', 'start', 'end',
-            'score_text', 'v_score_text', 'v_type_of_assessment', 'type_of_assessment',
-            'in_custody', 'out_custody', 'violent_recid', 'r_days_from_arrest', 'r_charge_degree'
+        
+        keep_cols = [
+            'age', 'c_charge_degree', 'race', 'age_cat', 'sex', 
+            'priors_count', 'days_b_screening_arrest', 'days_in_jail', 
+            'Target'
         ]
-        df = df.drop(columns=[col for col in drop_cols if col in df.columns], errors='ignore')
+        
+        df = df[keep_cols]
+
+        df['race'] = (df['race'] == 'African-American')
 
         self.numeric = [
-            'age', 'juv_fel_count', 'decile_score', 'juv_misd_count', 'juv_other_count',
-            'priors_count', 'days_b_screening_arrest', 'c_days_from_compas', 
-            'r_days_from_arrest', 'v_decile_score', 'days_in_jail', 'days_from_arrest_to_screening'
+            'age', 
+            'priors_count', 
+            'days_b_screening_arrest', 
+            'days_in_jail'
         ]
-        self.numeric = [col for col in self.numeric if col in df.columns]
-        self.categoricals = [col for col in df.columns if col not in self.numeric]
+        
+        self.categoricals = ['c_charge_degree', 'age_cat', 'sex']
 
         scaler = MinMaxScaler()
         df_numeric = pd.DataFrame(scaler.fit_transform(df[self.numeric]), columns=self.numeric, index=df.index)
         df_categorical = pd.get_dummies(df[self.categoricals], drop_first=True)
-        df_processed = pd.concat([df_numeric, df_categorical], axis=1)
+        
+        df_processed = pd.concat([df_numeric, df_categorical, df[['race', 'Target']]], axis=1)
+        
         self.df = df_processed
         return self
     

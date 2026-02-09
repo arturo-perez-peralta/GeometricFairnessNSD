@@ -1,1 +1,1 @@
-{"lr": 0.03420773518096624, "weight_decay": 0.00039687945698684495, "n_estimators": 58, "max_depth": 3, "learning_rate": 0.23033468237310867, "subsample": 0.8773275417765879, "fairness_margin": 0.1785286845714362}
+{"lr": 0.0013621387655491494, "weight_decay": 3.373697439695777e-05, "n_estimators": 249, "max_depth": 3, "learning_rate": 0.042604201425068405, "subsample": 0.7540542108853835, "fairness_margin": 0.1913558003469097}
