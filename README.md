@@ -1,6 +1,8 @@
 # Algorithmic Fairness in Neural Sheaf Diffusion via Geometrical Laplacian modifications
 
-Exploration of geometrical ideas to achieve fairness in ML models.
+Exploration of geometrical ideas to achieve fairness in graph models.
+
+![We identify biased directions and encourage our model to avoid them.](img/intro.png)
 
 ## Dependencies
 
