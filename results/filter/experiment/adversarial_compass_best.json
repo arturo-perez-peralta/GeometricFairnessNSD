@@ -1,1 +1,1 @@
-{"lr": 0.00768099818451151, "weight_decay": 0.0036174047893722935, "adversary_loss_weight": 10.713528147238183, "classifier_num_hidden_units": 64}
+{"lr": 0.0004856486153915317, "weight_decay": 0.0002728361749810712, "adversary_loss_weight": 0.005036274157604895, "classifier_num_hidden_units": 32}

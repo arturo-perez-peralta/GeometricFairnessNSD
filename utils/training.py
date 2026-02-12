@@ -835,11 +835,11 @@ def train_sklearn(
     else:
         if adversarial:
             ds_full = np_to_aif(x_np, np.zeros(len(x_np)), sensitive.cpu().numpy())
+            
             ds_full_pred = clf.predict(ds_full)
-            ds_full_prob = clf.predict_proba(ds_full)
-
+            
             pred = torch.Tensor(ds_full_pred.labels.ravel()).to(data.x.device)
-            prob = torch.Tensor(ds_full_prob.scores.ravel()).to(data.x.device)
+            prob = torch.Tensor(ds_full_pred.scores.ravel()).to(data.x.device)
 
             val_pred = pred[val_mask]
             test_pred = pred[test_mask]
